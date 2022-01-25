@@ -9,7 +9,9 @@ function SecondFrame() {
       <div className="h-auto px-5 md:px-16 py-6 md:py-16">
         <div>
           <h3 className=" font-bold text-2xl mt-2 leading-normal text-center">
-            <Link to="/">Freshcoastblockchain.com</Link>
+            <a href="freshcoastblockchain.com" target="_blank">
+              Freshcoastblockchain.com
+            </a>
           </h3>
 
           <p className="mt-6 font-normal text-xl text-justify sm:text-center mb-6">
