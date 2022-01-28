@@ -12,6 +12,7 @@ function Card(props) {
   const { isAuthenticated, isWeb3Enabled, enableWeb3, Moralis, isInitialized } =
     useMoralis();
 
+  //get proposal image
   const getInfo = async () => {
     const GovernorImages = Moralis.Object.extend("GovernorImages");
     const governorImages = new GovernorImages();
@@ -26,6 +27,7 @@ function Card(props) {
     }
   };
 
+  //get proposals for contract and count
   const getProposals = async () => {
     const Proposals = Moralis.Object.extend("Proposals");
     const query = new Moralis.Query(Proposals);

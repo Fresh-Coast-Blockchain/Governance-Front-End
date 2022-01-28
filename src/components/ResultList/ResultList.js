@@ -14,15 +14,14 @@ function ResultList() {
   const [proposalList, setProposals] = useState([]);
   const {
     isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
+
     Moralis,
     isInitialized,
-    isWeb3EnableLoading,
   } = useMoralis();
 
   const contractProcessor = useWeb3ExecuteFunction();
 
+  //filter proposals for finished proposals
   const filterOutCome = (list) => {
     let result = [];
     list.forEach((item) => {
@@ -39,6 +38,7 @@ function ResultList() {
     return result;
   };
 
+  //get proposal data from chain
   const getProposalData = async (id, description, address) => {
     const ABI = [
       {
@@ -120,6 +120,7 @@ function ResultList() {
 
     let proposal = await Moralis.executeFunction(options);
 
+    //return proposal detail
     return {
       data: proposal,
       description: description,
@@ -127,7 +128,9 @@ function ResultList() {
     };
   };
 
+  //get proposals for a contract
   const getGovernorProposals = async () => {
+    //check if user is on the right chain
     let web3 = new Moralis.Web3(window.ethereum);
     let netId = await web3.eth.net.getId();
     if (netId === 43113) {
@@ -152,17 +155,25 @@ function ResultList() {
           const object = results[i];
           description = object.get("description");
           mydata = object.get("proposalId");
+          //get hex of id
           hexId = mydata.events["0"].raw.data.substring(2);
+          //get the second 64bytes
           _64BytesId = hexId.match(/.{1,64}/g)[1];
-          proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+          _64BytesId.replace(/^0+/, "");
+          //get the id by removing leading zeros
+          //proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+          proposalId = _64BytesId.replace(/^0+/, "");
+
           let detail = await getProposalData(
             proposalId,
             description,
             results[i].get("govAddress")
           );
+          //push proposal into list
           proposalData = [...proposalData, detail];
         }
 
+        //get filtered outcome
         let outCome = filterOutCome(proposalData);
 
         setProposals(outCome);

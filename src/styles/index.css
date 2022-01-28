@@ -899,6 +899,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
 }
 
+.list-disc{
+  list-style-type: disc;
+}
+
+.list-decimal{
+  list-style-type: decimal;
+}
+
 .appearance-none{
   -webkit-appearance: none;
           appearance: none;
@@ -1162,6 +1170,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-no-repeat{
   background-repeat: no-repeat;
+}
+
+.stroke-black{
+  stroke: #000;
 }
 
 .p-2{
@@ -1447,6 +1459,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-700{
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-blue-600{
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.underline{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.line-through{
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
 }
 
 .opacity-30{

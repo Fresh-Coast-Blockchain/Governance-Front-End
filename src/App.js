@@ -2,6 +2,7 @@ import "./index.css";
 import Results from "./pages/Results";
 import CoinHolder from "./pages/CoinHolder";
 import CoinCreator from "./pages/CoinCreator";
+import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Proposals from "./pages/Proposals";
@@ -19,6 +20,7 @@ function App() {
   } = useMoralis();
 
   useEffect(() => {
+    //enable web3
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
@@ -36,6 +38,7 @@ function App() {
             exact
             element={<Proposals />}
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
     </Router>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useMoralis } from "react-moralis";
+//import { useMoralis } from "react-moralis";
 import { useAuthUpdate, useAuth } from "../../contexts/AuthProvider";
 import logo from "../../images/logo.png";
 
@@ -10,11 +10,12 @@ function Nav(props) {
 
   //get auth context
   const [AuthState, currentAccount] = useAuth();
-  const { isAuthenticated, isWeb3Enabled, enableWeb3, user } = useMoralis();
+
   const [menu, setMenu] = useState("hidden");
   const [currentPath, setPath] = useState("");
   const path = useLocation().pathname;
   useEffect(() => {
+    //get current path
     if (path == "/") {
       setPath("/");
     } else {

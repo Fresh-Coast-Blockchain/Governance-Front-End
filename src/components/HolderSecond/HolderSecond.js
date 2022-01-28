@@ -16,8 +16,7 @@ function HolderSecond() {
   const [proposalList, setProposals] = useState([]);
   const {
     isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
+
     Moralis,
     isInitialized,
     isWeb3EnableLoading,
@@ -26,6 +25,7 @@ function HolderSecond() {
 
   const contractProcessor = useWeb3ExecuteFunction();
 
+  //filter outcome based on selected proposal status
   const filterOutCome = (list) => {
     let result = [];
     list.forEach((item) => {
@@ -42,6 +42,7 @@ function HolderSecond() {
     return result;
   };
 
+  //get proposal data based on id
   const getProposalData = async (id, description) => {
     const ABI = [
       {
@@ -129,7 +130,9 @@ function HolderSecond() {
     };
   };
 
+  //get proposals for each contract
   const getGovernorProposals = async () => {
+    //check if user is on right chain
     let web3 = new Moralis.Web3(window.ethereum);
     let netId = await web3.eth.net.getId();
     if (netId === 43113) {
@@ -153,12 +156,19 @@ function HolderSecond() {
           const object = results[i];
           description = object.get("description");
           mydata = object.get("proposalId");
+          //get id hex
           hexId = mydata.events["0"].raw.data.substring(2);
+          //get second 64byte
           _64BytesId = hexId.match(/.{1,64}/g)[1];
-          proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+          //proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+          //get id leaving leading zeros
+          proposalId = _64BytesId.replace(/^0+/, "");
           let detail = await getProposalData(proposalId, description);
+          //store proposal in array
           proposalData = [...proposalData, detail];
         }
+
+        //filter list
         let outCome = filterOutCome(proposalData);
         setProposals(outCome);
         setLoading(false);
@@ -177,6 +187,8 @@ function HolderSecond() {
       });
     }
   };
+
+  //get name of selected contract
 
   const getGorvernorName = async () => {
     const Contracts = Moralis.Object.extend("GovernanceInstanceCreations");

@@ -16,6 +16,7 @@ function CreatorSecond() {
   //get auth context
   const [AuthState, currentAccount] = useAuth();
 
+  //get contracts belonging to user
   const getContracts = async () => {
     let user;
     if (!currentAccount && isAuthenticated) {

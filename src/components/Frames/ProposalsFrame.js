@@ -16,6 +16,7 @@ function ProposalsFrame(props) {
   const [proposalList, setProposals] = useState([]);
   const [AuthState, currentAccount] = useAuth();
 
+  //filter outcome
   const filterOutCome = (list) => {
     let result = [];
     list.forEach((item) => {
@@ -32,6 +33,7 @@ function ProposalsFrame(props) {
     return result;
   };
 
+  //get proposal data
   const getProposalData = async (id, description, address) => {
     const ABI = [
       {
@@ -141,12 +143,18 @@ function ProposalsFrame(props) {
         const object = results[i];
         description = object.get("description");
         mydata = object.get("proposalId");
+        //vet hex id
         hexId = mydata.events["0"].raw.data.substring(2);
+        //get second 64byte
         _64BytesId = hexId.match(/.{1,64}/g)[1];
-        proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+        //proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+        //get proposal id by removing leading zeros
+        proposalId = _64BytesId.replace(/^0+/, "");
         let detail = await getProposalData(proposalId, description, address);
+        //push to array
         proposalData = [...proposalData, detail];
       }
+      //filter outcome
       let outCome = filterOutCome(proposalData);
       setProposals(outCome);
       setLoading(false);

@@ -6,17 +6,12 @@ function ProposalAbout() {
   const [loading, setLoading] = useState(true);
   const [about, setAbout] = useState("");
 
-  const {
-    isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
-    Moralis,
-    isInitialized,
-    isWeb3EnableLoading,
-  } = useMoralis();
+  const { isAuthenticated, Moralis, isInitialized, isWeb3EnableLoading } =
+    useMoralis();
   const { address, section } = useParams();
 
   const getDetails = async () => {
+    //get the contract about details
     const Governance = Moralis.Object.extend("GovernanceInstanceCreations");
     const query = new Moralis.Query(Governance);
     query.equalTo("govAddress", address);

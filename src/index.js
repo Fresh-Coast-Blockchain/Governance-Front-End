@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MoralisProvider } from "react-moralis";
 
-//moralis detials
+//moralis initialization
 const appId = process.env.REACT_APP_APP_ID;
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 ReactDOM.render(

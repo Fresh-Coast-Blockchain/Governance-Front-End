@@ -24,6 +24,8 @@ function ContractForm() {
   const [transactionValue, setTransactionValue] = useState("");
   const [name, setName] = useState("");
 
+
+  //capture the image uploaded
   const captureFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -36,6 +38,7 @@ function ContractForm() {
 
       setBtnState(true);
       setImage(null);
+      //save to ipfs
       const added = await client.add(result);
       //console.log(added.path);
       setImage(added.path);

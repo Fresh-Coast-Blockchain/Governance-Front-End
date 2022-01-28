@@ -10,9 +10,11 @@ function CoinHolderSecond(props) {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
+  //get the query data
   const searchObj = useLocation().search;
   const myQuery = new URLSearchParams(searchObj).get("q");
 
+  //get all contracts
   const getContracts = async () => {
     const Contracts = Moralis.Object.extend("GovernanceInstanceCreations");
     const query = new Moralis.Query(Contracts);
@@ -22,6 +24,7 @@ function CoinHolderSecond(props) {
     setLoading(false);
   };
 
+  //get contracts for search query
   const getContractsForQuery = async (myQuery) => {
     const Contracts = Moralis.Object.extend("GovernanceInstanceCreations");
     const query = new Moralis.Query(Contracts);

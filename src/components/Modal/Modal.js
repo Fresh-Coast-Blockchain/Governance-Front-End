@@ -8,8 +8,7 @@ function Modal(props) {
   const [caution, setCaution] = useState(props.caution);
   const [user, setUser] = useState("");
   const [contractCreated, setContratedCreated] = useState(false);
-  const { isAuthenticated, isWeb3Enabled, enableWeb3, Moralis, isInitialized } =
-    useMoralis();
+  const { isAuthenticated, Moralis, isInitialized } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
   const [reload, setReload] = useState(false);
   const [AuthState, currentAccount] = useAuth();
@@ -30,6 +29,7 @@ function Modal(props) {
     name,
     transactionValue,
   } = props.values;
+  //prepare data in form of seconds
   lockDelayInSec = Number(lockDelay) * 24 * 60 * 60;
   voteDelayInSec = Number(voteDelay) * 2; //4 * 60 * 60;
   votePeriodInSec = Number(votePeriod) * 24 * 60 * 60;
@@ -37,12 +37,13 @@ function Modal(props) {
   proposalThresholdInSec = Number(lockDelay) * 24 * 60 * 60;
   mainTransactionValue = transactionValue ? transactionValue : 0;
 
+  //save image to moralis
   const saveImage = (data) => {
     let hexId = data.events["0"].raw.data.substring(2);
     let _64BytesId = hexId.match(/.{1,64}/g)[0];
     let info = _64BytesId.slice(-40);
     info = "0x" + info;
-    // console.log(info);
+
     const GovernorImages = Moralis.Object.extend("GovernorImages");
     const governorImages = new GovernorImages();
 
@@ -62,7 +63,9 @@ function Modal(props) {
     );
   };
 
+  //create contract
   async function createGovernance() {
+    //check if user is on right chain
     let web3 = new Moralis.Web3(window.ethereum);
     let netId = await web3.eth.net.getId();
     if (netId === 43113) {
@@ -129,6 +132,7 @@ function Modal(props) {
       await contractProcessor.fetch({
         params: options,
         onSuccess: (data) => {
+          //save on moralis
           saveImage(data);
         },
         onError: (err) => {

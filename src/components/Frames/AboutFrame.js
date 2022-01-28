@@ -17,6 +17,7 @@ function AboutFrame(props) {
     setAbout(event.target.value);
   };
 
+  //save about information
   const updateTable = async () => {
     // Create the object.
     const Governance = Moralis.Object.extend("GovernanceInstanceCreations");
@@ -35,6 +36,7 @@ function AboutFrame(props) {
     if (about.trim().length > 0) updateTable();
   };
 
+  //get about information of a contract
   const getDetails = () => {
     let address = props.contracts[0].get("govAddress");
 

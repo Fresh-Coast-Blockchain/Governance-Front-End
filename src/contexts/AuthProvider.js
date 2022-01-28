@@ -17,6 +17,7 @@ export function useAuthUpdate() {
   return useContext(AuthUpdateContext);
 }
 
+//hook for loader
 export function useLoader() {
   return useContext(LoaderContext);
 }
@@ -30,7 +31,6 @@ export function AuthProvider({ children }) {
     account,
     isInitialized,
     authError,
-    isWeb3Enabled,
   } = useMoralis();
   const [userState, setUser] = useState();
   const [loaderState, setLoader] = useState(false);
@@ -39,6 +39,7 @@ export function AuthProvider({ children }) {
 
   //connect wallet
   const connectWallet = async () => {
+    //check if metamask is installed
     if (typeof window.ethereum !== "undefined") {
       /* const myuser = await authenticate({
         provider: "walletconnect",
@@ -51,6 +52,7 @@ export function AuthProvider({ children }) {
           "pillar",
         ],
       });*/
+      //check if user is on the right chain
       let web3 = new Moralis.Web3(window.ethereum);
       let netId = await web3.eth.net.getId();
       if (netId !== 43113) {
@@ -66,6 +68,7 @@ export function AuthProvider({ children }) {
           setLoader(false);
         }
       } else {
+        //authenticate
         setLoader(true);
         setConnectorClick(true);
         await authenticate({ provider: "injected" });
@@ -93,11 +96,14 @@ export function AuthProvider({ children }) {
     setUser(false);
   };
 
+  //watch for address changes and set new account as current account
   const evaluateAccounts = async (account) => {
+    //check if metamask is installed
     if (typeof window.ethereum !== "undefined") {
       let accountsList = Moralis.User.current();
       if (isAuthenticated && accountsList) {
         let user = accountsList.get("accounts")[0];
+        //if account changed
         if (account && account !== user) {
           setCurrentAccount(account);
         }
@@ -108,7 +114,9 @@ export function AuthProvider({ children }) {
     }
   };
 
+  //watch for address change
   Moralis.onChainChanged(async () => {
+    //check user network
     let web3 = new Moralis.Web3(window.ethereum);
     let netId = await web3.eth.net.getId();
     if (netId !== 43113) {
@@ -146,6 +154,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     setUser(isAuthenticated);
+    //check for authentication error
     if (authError && connectorClick && typeof window.ethereum !== "undefined") {
       setLoader(false);
       setConnectorClick(false);

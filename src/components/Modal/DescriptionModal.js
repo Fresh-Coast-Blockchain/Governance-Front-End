@@ -16,8 +16,7 @@ function DescriptionModal(props) {
   const [proposal, setProposal] = useState("");
   const [proposalCreated, setProposalCreated] = useState(false);
   const [form, setForm] = useState(true);
-  const { isAuthenticated, isWeb3Enabled, enableWeb3, Moralis, isInitialized } =
-    useMoralis();
+  const { isAuthenticated, Moralis, isInitialized } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 
   useEffect(() => {
