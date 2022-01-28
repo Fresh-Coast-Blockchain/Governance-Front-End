@@ -2,6 +2,7 @@ import React from "react";
 import holder from "../../images/holder.png";
 import creatorImage from "../../images/creatorImage.png";
 import { Link } from "react-router-dom";
+import { ExternalLink } from "react-external-link";
 
 function SecondFrame() {
   return (
@@ -9,9 +10,9 @@ function SecondFrame() {
       <div className="h-auto px-5 md:px-16 py-6 md:py-16">
         <div>
           <h3 className=" font-bold text-2xl mt-2 leading-normal text-center">
-            <a href="freshcoastblockchain.com" target="_blank">
-              Freshcoastblockchain.com
-            </a>
+            <ExternalLink href="http://freshcoastblockchain.com">
+              <span>Freshcoastblockchain.com</span>
+            </ExternalLink>
           </h3>
 
           <p className="mt-6 font-normal text-xl text-justify sm:text-center mb-6">
@@ -67,7 +68,7 @@ function SecondFrame() {
             <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
               Workbench
             </h4>
-            <p className="font-normal text-justify px-6 text-xl ">
+            <p className="font-normal text-center sm:text-justify px-6 text-xl ">
               Use the workbench to create audited, certified and tested
               governance contracts realtime.
             </p>
@@ -85,7 +86,7 @@ function SecondFrame() {
             <h4 className="text-center text-2xl font-bold leading-normal  mb-6">
               Voter
             </h4>
-            <p className="font-normal text-justify px-6 text-xl">
+            <p className="font-normal text-center sm:text-justify px-6 text-xl">
               Connect your wallet to see proposals waiting for your vote.
             </p>
           </div>

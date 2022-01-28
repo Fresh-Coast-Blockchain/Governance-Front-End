@@ -42,7 +42,7 @@ function Modal(props) {
     let _64BytesId = hexId.match(/.{1,64}/g)[0];
     let info = _64BytesId.slice(-40);
     info = "0x" + info;
-    console.log(info);
+    // console.log(info);
     const GovernorImages = Moralis.Object.extend("GovernorImages");
     const governorImages = new GovernorImages();
 

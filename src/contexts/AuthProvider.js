@@ -71,6 +71,7 @@ export function AuthProvider({ children }) {
         await authenticate({ provider: "injected" });
 
         setLoader(false);
+        window.location.reload();
       }
 
       //set auth state from moralis

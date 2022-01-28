@@ -167,6 +167,18 @@ function Progress({ status, data, voteCount, totalVotes }) {
     });
   }
 
+  /*const getBalances = async () => {
+    const options = {
+      chain: "avalanche testnet",
+      address: `${currentAccount}`,
+    };
+    const balances = await Moralis.Web3API.account.getTokenBalances(options);
+    console.log(balances);
+    console.log(user);
+
+    //setModal(true)
+  };*/
+
   const forYes = () => {
     const result = Moralis.Units.FromWei(data.forVotes_);
     return result;
