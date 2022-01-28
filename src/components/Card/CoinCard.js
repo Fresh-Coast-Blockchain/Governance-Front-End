@@ -4,7 +4,6 @@ import VoteState from "../VoteState";
 import Progress from "../Progress";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import { useAuthUpdate, useAuth } from "../../contexts/AuthProvider";
-import { generatePath } from "react-router-dom";
 import img from "../../images/img.png";
 import DescriptionModal from "../Modal/DescriptionModal";
 
@@ -18,14 +17,13 @@ function CoinCard(props) {
 
   const {
     isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
+
     Moralis,
     isInitialized,
-    isWeb3EnableLoading,
   } = useMoralis();
 
-  const generatePath = async (user) => {
+  //set path for user, to vote or not
+  const generatePathForUser = async (user) => {
     const Votes = Moralis.Object.extend("Votes");
     const query = new Moralis.Query(Votes);
     query.equalTo("voter", user);
@@ -37,19 +35,22 @@ function CoinCard(props) {
     setVotesNumber(voteNumber);
   };
 
+  //check user ability to vote
   const verify = async () => {
     let user;
     if (currentAccount) {
       user = currentAccount;
-      generatePath(user);
+      generatePathForUser(user);
     } else if (!currentAccount && isAuthenticated) {
       let accounts = Moralis.User.current();
       user = accounts.get("accounts")[0];
-      generatePath(user);
+      generatePathForUser(user);
     } else {
       setVotesNumber(1);
     }
   };
+
+  //get number votes for proposal
 
   const getVotesCount = async () => {
     const Votes = Moralis.Object.extend("Votes");
@@ -61,6 +62,7 @@ function CoinCard(props) {
     setTotalVotes(voteNumber);
   };
 
+  //get contract image
   const getInfo = async () => {
     const GovernorImages = Moralis.Object.extend("GovernorImages");
     const governorImages = new GovernorImages();

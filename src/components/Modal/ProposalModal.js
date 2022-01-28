@@ -14,8 +14,7 @@ function ProposalModal(props) {
   const [proposal, setProposal] = useState("");
   const [proposalCreated, setProposalCreated] = useState(false);
   const [form, setForm] = useState(true);
-  const { isAuthenticated, isWeb3Enabled, enableWeb3, Moralis, isInitialized } =
-    useMoralis();
+  const { isAuthenticated, Moralis, isInitialized } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 
   const handleProposalIns = (event) => {
@@ -23,15 +22,18 @@ function ProposalModal(props) {
   };
 
   async function delegate() {
+    //check if user is on the right chain
     let web3 = new Moralis.Web3(window.ethereum);
     let netId = await web3.eth.net.getId();
     if (netId === 43113) {
+      //check if user is delegated
       const Delegations = Moralis.Object.extend("Delegations");
       const query = new Moralis.Query(Delegations);
       query.equalTo("delegator", user);
       const results = await query.find();
 
       if (results.length == 0) {
+        //prepare delegation
         let options = {
           contractAddress: "0x364ba491b1201a9c0bd326144cd6472e5ff299f1",
           functionName: "delegate",
@@ -55,16 +57,18 @@ function ProposalModal(props) {
           },
           //msgValue: Moralis.Units.ETH(0.1),
         };
-
+        //delegate
         await contractProcessor.fetch({
           params: options,
           onSuccess: () => {
+            //store on moralis
             const NewDelegate = Moralis.Object.extend("Delegations");
             const newDelegate = new NewDelegate();
 
             newDelegate.set("isDelegated", true);
             newDelegate.set("delegator", user);
             newDelegate.save().then((data) => {
+              //make proposal
               makeProposal();
             });
           },
@@ -98,6 +102,7 @@ function ProposalModal(props) {
     }
   }
 
+  //make proposal
   async function makeProposal() {
     let options = {
       contractAddress: props.address,
@@ -157,6 +162,7 @@ function ProposalModal(props) {
     await contractProcessor.fetch({
       params: options,
       onSuccess: (id) => {
+        //store on moralis
         const Proposals = Moralis.Object.extend("Proposals");
         const proposals = new Proposals();
 
@@ -170,6 +176,7 @@ function ProposalModal(props) {
             setLoading(false);
             setCaution(false);
             setProposalCreated(true);
+            //reload page
             window.location.reload();
           },
           (error) => {

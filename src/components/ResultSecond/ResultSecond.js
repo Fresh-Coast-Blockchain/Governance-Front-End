@@ -17,6 +17,7 @@ function ResultSecond() {
   //get auth context
   const [AuthState, currentAccount] = useAuth();
 
+  //get all contracts
   const getContracts = async () => {
     let user;
     if (!currentAccount && isAuthenticated) {
@@ -31,6 +32,7 @@ function ResultSecond() {
     query.equalTo("govOwner", user);
     const results = await query.find();
 
+    //set contract list
     setContracts(results);
     setLoading(false);
   };
@@ -88,7 +90,7 @@ function ResultSecond() {
           contract once, and you will not be able to change any information once
           your governance contract is successfully created.
         </p>*/}
-
+        {/** display result list */}
         <ResultList />
         {/*content */}
       </div>

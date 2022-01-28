@@ -1,6 +1,7 @@
 import React from "react";
 
 function VoteState({ status }) {
+  //display components based on proposal status
   if (status === 0) {
     return (
       <div className="bg-gray-300 font-normal w-[100px]  flex items-center justify-center  text-center text-xs text-gray-500   sm:ml-2   rounded-full ">

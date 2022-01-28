@@ -12,22 +12,24 @@ function Progress({ status, data, voteCount, totalVotes }) {
   const [account, setAccount] = useState("");
   const [reload, setReload] = useState(false);
 
-  const { isAuthenticated, isWeb3Enabled, enableWeb3, Moralis, isInitialized } =
-    useMoralis();
+  const { isAuthenticated, enableWeb3, Moralis, isInitialized } = useMoralis();
   const { address } = useParams();
   const contractProcessor = useWeb3ExecuteFunction();
 
   async function delegate(choice) {
+    //check if user is on right chain
     let web3 = new Moralis.Web3(window.ethereum);
     let netId = await web3.eth.net.getId();
     if (netId === 43113) {
       setLoader(true);
+      //check if user has been delegated
       const Delegations = Moralis.Object.extend("Delegations");
       const query = new Moralis.Query(Delegations);
       query.equalTo("delegator", user);
       const results = await query.find();
 
       if (results.length == 0) {
+        //prepare for delegation
         let options = {
           contractAddress: "0x364ba491b1201a9c0bd326144cd6472e5ff299f1",
           functionName: "delegate",
@@ -52,8 +54,10 @@ function Progress({ status, data, voteCount, totalVotes }) {
           //msgValue: Moralis.Units.ETH(0.1),
         };
 
+        //delegate
         await contractProcessor.fetch({
           params: options,
+          //save on moralis
           onSuccess: () => {
             const NewDelegate = Moralis.Object.extend("Delegations");
             const newDelegate = new NewDelegate();
@@ -147,10 +151,12 @@ function Progress({ status, data, voteCount, totalVotes }) {
     };
     await Moralis.enableWeb3();
 
-    // const voteDetails = await Moralis.executeFunction(options)
+    //vote
     await contractProcessor.fetch({
       params: options,
+
       onSuccess: () => {
+        //record on moralis
         recordVote(choice);
       },
       onError: (err) => {
@@ -179,21 +185,26 @@ function Progress({ status, data, voteCount, totalVotes }) {
     //setModal(true)
   };*/
 
+  //convert vote counts from wei
   const forYes = () => {
     const result = Moralis.Units.FromWei(data.forVotes_);
     return result;
   };
+
   const forNo = () => {
     const result = Moralis.Units.FromWei(data.againstVotes_);
     return result;
   };
 
+  //get percentage for forvotes
   const yesPerc = (yes, no) => {
     let total = Number(yes) + Number(no);
     let result = (Number(yes) / total) * 100;
     result = isNaN(result) && !Number(result) ? 0 : Number(result);
     return result.toFixed();
   };
+
+  //get percentage for againstvotes
   const noPerc = (yes, no) => {
     let total = Number(yes) + Number(no);
     let result = (Number(no) / total) * 100;
@@ -202,6 +213,7 @@ function Progress({ status, data, voteCount, totalVotes }) {
   };
 
   const verdict = (yes, no) => {
+    //calcualte final vote verdict based on no and yes votes
     if (Number(yes) !== 0 || Number(no) !== 0) {
       if (Number(yes) > Number(no)) return "Yes";
       if (Number(yes) < Number(no)) return "No";
@@ -212,10 +224,12 @@ function Progress({ status, data, voteCount, totalVotes }) {
   };
 
   const getSizeYes = () => {
+    //calculate percentage of for votes for progress bar
     let result = yesPerc(forYes(), forNo());
     return result + "%";
   };
   const getSizeNo = () => {
+    //calculate percentage of against votes for progress bar
     let result = noPerc(forYes(), forNo());
     return result + "%";
   };
@@ -235,6 +249,7 @@ function Progress({ status, data, voteCount, totalVotes }) {
     }
   }, [isInitialized, reload, currentAccount]);
 
+  //display components based on proposal status
   if (status === 0) {
     return (
       <div className="w-full">

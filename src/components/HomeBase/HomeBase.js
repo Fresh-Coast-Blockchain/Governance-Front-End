@@ -6,6 +6,7 @@ import CoinHolderSecond from "../CoinHolderSecond/CoinHolderSecond";
 function HomeBase() {
   return (
     <div>
+      {/**get coinholder contract listing section */}
       <CoinHolderSecond page={"home"} />
     </div>
   );

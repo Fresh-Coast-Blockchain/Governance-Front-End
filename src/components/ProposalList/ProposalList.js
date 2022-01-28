@@ -8,8 +8,7 @@ function ProposalList(props) {
   const { address } = useParams();
   const {
     isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
+
     Moralis,
     isInitialized,
     isWeb3EnableLoading,

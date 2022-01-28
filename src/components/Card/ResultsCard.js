@@ -13,13 +13,12 @@ function ResultsCard(props) {
 
   const {
     isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
+
     Moralis,
     isInitialized,
-    isWeb3EnableLoading,
   } = useMoralis();
 
+  //get contract name
   const getGovernorName = async () => {
     const Contracts = Moralis.Object.extend("GovernanceInstanceCreations");
     const query = new Moralis.Query(Contracts);
@@ -29,6 +28,7 @@ function ResultsCard(props) {
     setName(name);
   };
 
+  //get contract images
   const getInfo = async () => {
     const GovernorImages = Moralis.Object.extend("GovernorImages");
     const governorImages = new GovernorImages();
@@ -51,12 +51,15 @@ function ResultsCard(props) {
     return result;
   };
 
+  //get percentage for forvotes
   const yesPerc = (yes, no) => {
     let total = Number(yes) + Number(no);
     let result = (Number(yes) / total) * 100;
     result = isNaN(result) && !Number(result) ? 0 : Number(result);
     return result.toFixed();
   };
+
+  //get percentage for againstvotes
   const noPerc = (yes, no) => {
     let total = Number(yes) + Number(no);
     let result = (Number(no) / total) * 100;
@@ -64,6 +67,7 @@ function ResultsCard(props) {
     return result.toFixed();
   };
 
+  //calculate verdict
   const verdict = (yes, no) => {
     if (Number(yes) !== 0 || Number(no) !== 0) {
       if (Number(yes) > Number(no)) return "Yes";

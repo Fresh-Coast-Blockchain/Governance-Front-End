@@ -16,11 +16,9 @@ function HolderHero() {
   const [image, setImage] = useState("");
   const {
     isAuthenticated,
-    isWeb3Enabled,
-    enableWeb3,
+
     Moralis,
     isInitialized,
-    isWeb3EnableLoading,
   } = useMoralis();
 
   //get auth context
@@ -29,6 +27,7 @@ function HolderHero() {
   //get update contexts
   const [connectWallet, disConnectWallet] = useAuthUpdate();
 
+  //get contract name
   const getGorvernorName = async () => {
     const Contracts = Moralis.Object.extend("GovernanceInstanceCreations");
     const query = new Moralis.Query(Contracts);
@@ -37,6 +36,8 @@ function HolderHero() {
     let name = results[0].get("govName");
     setName(name);
   };
+
+  //get number of votes for a contract
   const getVotes = async () => {
     const Votes = Moralis.Object.extend("Votes");
     const query = new Moralis.Query(Votes);
@@ -45,6 +46,8 @@ function HolderHero() {
     let voteNumber = results.length;
     setVotesNumber(voteNumber);
   };
+
+  //get proposals for a contract
   const getProposals = async () => {
     const Proposals = Moralis.Object.extend("Proposals");
     const query = new Moralis.Query(Proposals);
@@ -54,6 +57,7 @@ function HolderHero() {
     setProposalsNumber(proposalsNumber);
   };
 
+  //get url to contract image
   const getInfo = async () => {
     const GovernorImages = Moralis.Object.extend("GovernorImages");
     const governorImages = new GovernorImages();

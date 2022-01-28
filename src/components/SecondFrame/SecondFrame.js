@@ -24,23 +24,33 @@ function SecondFrame() {
         <div className="grid grid-cols-2 justify-center gap-6 ">
           <div className="h-auto min-h-[300px] pb-4 col-span-2 mb-4  sm:col-span-1 bg-bgBlue pt-6">
             <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
-              PHASE ONE
+              Hackathon
             </h4>
-            <p className="font-normal text-justify px-6 text-xl ">
-              Coin holder - Ability to connect wallet and vote on several
-              proposals. Governance Creator - Ability to connect wallet, create
-              proposals and vote on proposals.
-            </p>
+            <ul className="font-normal  px-6 pl-8 text-lg list-disc">
+              <li>Real-time Building</li>
+
+              <li>Voting</li>
+              <li>Manual Contract Adjustments</li>
+
+              <li>FRESH Token for voting</li>
+            </ul>
           </div>
           <div className="h-auto min-h-[300px] pb-4 col-span-2 mb-4 sm:col-span-1 bg-bgBlue pt-6">
             <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
-              PHASE TWO
+              Production
             </h4>
-            <p className="font-normal text-justify px-6 text-xl ">
-              Coin holder - Ability to connect wallet and vote on several
-              proposals. Governance Creator - Ability to connect wallet, create
-              proposals and vote on proposals.
-            </p>
+            <ul className="font-normal  px-6 pl-8 text-lg list-disc">
+              <li>Real-time Building</li>
+              <li>Upgradable</li>
+              <li>Voting</li>
+              <li>Manual Contract Adjustments</li>
+              <li>Automated Contract Adjustments</li>
+              <li>FRESH Token for voting</li>
+              <li>BYOT</li>
+              <li>Stacking/Rewards</li>
+              <li>Restricted Voting</li>
+              <li>Quadratic Voting</li>
+            </ul>
           </div>
         </div>
       </div>
