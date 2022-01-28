@@ -37,14 +37,14 @@ function ContractForm() {
       setBtnState(true);
       setImage(null);
       const added = await client.add(result);
-      console.log(added.path);
+      //console.log(added.path);
       setImage(added.path);
       setBtnState(false);
     };
   };
 
   const uploadImage = async (description) => {
-    console.log("Submitting file to ipfs...");
+    //console.log("Submitting file to ipfs...");
     // upload the file
     // const added = await client.add(buffer);
   };

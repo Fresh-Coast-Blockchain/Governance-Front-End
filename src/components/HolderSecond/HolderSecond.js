@@ -138,7 +138,7 @@ function HolderSecond() {
       const query = new Moralis.Query(Proposals);
       query.equalTo("govAddress", address);
       const results = await query.find();
-      console.log(results);
+
       if (results.length > 0) {
         let description;
         let mydata;
@@ -280,36 +280,38 @@ function HolderSecond() {
                 />
               </div>
             </form>*/}
-            <div className="  relative">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-3 w-3 absolute inset-y-7 right-2  "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-              <form className="w-full flex justify-end">
-                <select
-                  onChange={(event) => {
-                    setFilter(event.target.value);
-                  }}
-                  value={filter}
-                  className="form-select appearance-none bg-coinCardBorder mt-4   rounded-md transition  ease-in-out  w-full sm:max-w-[250px] h-[40px] cursor-pointer py-2 px-3  leading-tight text-xs focus:outline-primaryBtn  "
+            {section == 1 && (
+              <div className="  relative">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3 w-3 absolute inset-y-7 right-2  "
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <option value="all">All</option>
-                  <option value="active">Active</option>
-                  <option value="pending">Pending</option>
-                  <option value="finished">Finished</option>
-                </select>
-              </form>
-            </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+                <form className="w-full flex justify-end">
+                  <select
+                    onChange={(event) => {
+                      setFilter(event.target.value);
+                    }}
+                    value={filter}
+                    className="form-select appearance-none bg-coinCardBorder mt-4   rounded-md transition  ease-in-out  w-full sm:max-w-[250px] h-[40px] cursor-pointer py-2 px-3  leading-tight text-xs focus:outline-primaryBtn  "
+                  >
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="finished">Finished</option>
+                  </select>
+                </form>
+              </div>
+            )}
           </div>
         </div>
         {section == 1 && (

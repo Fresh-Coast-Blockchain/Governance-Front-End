@@ -81,12 +81,7 @@ function CoinCard(props) {
   }, [currentAccount]);
   return (
     <div>
-      <div
-        onClick={() => {
-          setModal(true);
-        }}
-        className=" hover:shadow-md cursor-pointer bg-white h-auto p-2 py-4 rounded-xl border-2 border-coinCardBorder grid grid-cols-2 mb-4"
-      >
+      <div className=" hover:shadow-md cursor-pointer bg-white h-auto p-2 py-4 rounded-xl border-2 border-coinCardBorder grid grid-cols-2 mb-4">
         <div className="col-span-2 sm:col-span-1 px-2 border-r-0  sm:border-r-2 border-coinCardBorder ">
           <div>
             <div className="flex justify-between">
@@ -106,7 +101,19 @@ function CoinCard(props) {
             {/*<p className="text-xs pl-8 sm:pl-8">By: Tremendous crypto group</p>*/}
             <p className="text-sm pt-2 font-normal">
               {props.description.substring(0, 100)}
-              {props.description.length > 100 ? "..." : ""}
+              {props.description.length > 100 ? (
+                <span
+                  onClick={() => {
+                    setModal(true);
+                  }}
+                  className="text-gray-500 hover:underline"
+                >
+                  {" "}
+                  read more...
+                </span>
+              ) : (
+                ""
+              )}
             </p>
           </div>
         </div>

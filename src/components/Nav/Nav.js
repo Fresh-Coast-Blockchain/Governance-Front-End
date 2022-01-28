@@ -69,13 +69,6 @@ function Nav(props) {
           >
             Results
           </Link>
-
-          <Link
-            to="/about"
-            className={`hover:bg-bgGray py-1 px-2 rounded-lg  pb-1  cursor-pointer`}
-          >
-            About
-          </Link>
         </div>
         <div className="hidden lg:flex w-[20%] justify-end">
           {!AuthState && (
@@ -121,7 +114,7 @@ function Nav(props) {
         </div>
 
         <div
-          className={` ${menu} absolute lg:hidden top-full px-2 py-4 right-7 h-auto bg-white text-[15px] font-normal shadow rounded-md w-[200px]`}
+          className={` ${menu} z-50 absolute lg:hidden top-full px-2 py-4 right-7 h-auto bg-white text-[15px] font-normal shadow rounded-md w-[200px]`}
         >
           <Link to="/">
             <div
@@ -158,10 +151,6 @@ function Nav(props) {
             >
               Results
             </div>
-          </Link>
-
-          <Link to="/about">
-            <div className={`w-full py-2 hover:bg-bgGray pl-2`}>About</div>
           </Link>
 
           {!AuthState && (

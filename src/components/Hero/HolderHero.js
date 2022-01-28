@@ -80,7 +80,7 @@ function HolderHero() {
   return (
     <div>
       <div className="pt-6 bg-bgGray h-auto px-5 md:px-16 pb-10 relative">
-        <nav className="flex" aria-label="Breadcrumb">
+        <nav className="flex" aria-label="Breadcrumb relative">
           <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li>
               <div className="flex items-center">
