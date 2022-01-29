@@ -18,7 +18,9 @@ function CoinHolderSecond(props) {
   const getContracts = async () => {
     const Contracts = Moralis.Object.extend("GovernanceInstanceCreations");
     const query = new Moralis.Query(Contracts);
-
+    if (props.page == "home") {
+      query.limit(8);
+    }
     const results = await query.find();
     setContracts(results);
     setLoading(false);
