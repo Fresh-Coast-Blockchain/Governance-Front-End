@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c60ff35f.chunk.css",
+    "main.js": "/static/js/main.b1ed78cd.chunk.js",
+    "main.js.map": "/static/js/main.b1ed78cd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ce029564.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ce029564.js.map",
+    "static/js/2.db865e62.chunk.js": "/static/js/2.db865e62.chunk.js",
+    "static/js/2.db865e62.chunk.js.map": "/static/js/2.db865e62.chunk.js.map",
+    "static/js/3.9585f0aa.chunk.js": "/static/js/3.9585f0aa.chunk.js",
+    "static/js/3.9585f0aa.chunk.js.map": "/static/js/3.9585f0aa.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c60ff35f.chunk.css.map": "/static/css/main.c60ff35f.chunk.css.map",
+    "static/js/2.db865e62.chunk.js.LICENSE.txt": "/static/js/2.db865e62.chunk.js.LICENSE.txt",
+    "static/media/Coin98.1e4e4073.png": "/static/media/Coin98.1e4e4073.png",
+    "static/media/MathWallet.c8223809.svg": "/static/media/MathWallet.c8223809.svg",
+    "static/media/SafePal.482d45d2.svg": "/static/media/SafePal.482d45d2.svg",
+    "static/media/TokenPocket.977e38ab.svg": "/static/media/TokenPocket.977e38ab.svg",
+    "static/media/coin.e4d69bcd.png": "/static/media/coin.e4d69bcd.png",
+    "static/media/coinholder.7b676dc9.png": "/static/media/coinholder.7b676dc9.png",
+    "static/media/creatorImage.41831fb1.png": "/static/media/creatorImage.41831fb1.png",
+    "static/media/creatormain.e50006ed.png": "/static/media/creatormain.e50006ed.png",
+    "static/media/holder.32eee70b.png": "/static/media/holder.32eee70b.png",
+    "static/media/homepageHero.2c081d07.png": "/static/media/homepageHero.2c081d07.png",
+    "static/media/img.2e348a05.png": "/static/media/img.2e348a05.png",
+    "static/media/result.df394e50.png": "/static/media/result.df394e50.png",
+    "static/media/wallet-connect.488dc369.svg": "/static/media/wallet-connect.488dc369.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce029564.js",
+    "static/js/2.db865e62.chunk.js",
+    "static/css/main.c60ff35f.chunk.css",
+    "static/js/main.b1ed78cd.chunk.js"
+  ]
+}
