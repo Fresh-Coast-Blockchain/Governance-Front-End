@@ -225,9 +225,7 @@ function ProposalModal(props) {
             {caution && (
               <div>
                 <p>
-                  <strong>NOTE:</strong> Your can not edit this proposal once it
-                  has been recorded.
-                </p>
+                  <strong>NOTE:</strong> Once created this proposal cannot be modified.             </p>
                 <div className="flex justify-center space-x-3">
                   <span
                     className="pt-2  text-xs text-primaryBtn cursor-pointer hover:underline"
