@@ -20,7 +20,7 @@ function ContractFrame(props) {
       {!AuthState && (
         <div>
           <p className="text-xs pt-3">
-            Connect your wallet to gain access to creating your own proposal.
+            Connect your wallet to gain access to creating your own contract.
           </p>
 
           <button
