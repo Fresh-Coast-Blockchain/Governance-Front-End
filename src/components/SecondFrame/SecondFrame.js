@@ -11,14 +11,14 @@ function SecondFrame() {
         <div>
           <h3 className=" font-bold text-2xl mt-2 leading-normal text-center">
             <ExternalLink href="http://freshcoastblockchain.com">
-              <span>Freshcoastblockchain.com</span>
+              <span>DAO Architect</span>
             </ExternalLink>
           </h3>
 
           <p className="mt-6 font-normal text-xl text-justify sm:text-center mb-6">
-            Fresh coast blockchain is disrupting blockchain governance. We
+            DAO Architect is disrupting on and off blockchain governance. We
             provide real-time creation of audited, certified, tested, and
-            upgradable governance contracts.
+            upgradable governance contracts. 
           </p>
         </div>
         <div className="grid grid-cols-2 justify-center gap-6 ">
