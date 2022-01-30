@@ -26,7 +26,7 @@ function SecondFrame() {
             <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
               Hackathon
             </h4>
-            <ul className="font-normal  px-6 pl-8 text-lg list-disc">
+            <ul className="text-center font-normal  px-6 pl-8 text-lg list-disc">
               <li>Real-time Building</li>
 
               <li>Voting</li>
@@ -39,7 +39,7 @@ function SecondFrame() {
             <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
               Production
             </h4>
-            <ul className="font-normal  px-6 pl-8 text-lg list-disc">
+            <ul className="text-center font-normal  px-6 pl-8 text-lg list-disc">
               <li>Real-time Building</li>
               <li>Upgradable</li>
               <li>Voting</li>
