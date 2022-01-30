@@ -24,7 +24,6 @@ function ContractForm() {
   const [transactionValue, setTransactionValue] = useState("");
   const [name, setName] = useState("");
 
-
   //capture the image uploaded
   const captureFile = (event) => {
     event.preventDefault();
@@ -100,23 +99,37 @@ function ContractForm() {
         </div>
         <div className="  col-span-2 sm:col-span-1 sm:pr-4">
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="govName"
+            >
+              Governance name
+            </label>
             <input
               className=" appearance-none border rounded-md w-full h-[40px] py-2 px-3 cursor-pointer text-gray-700 leading-tight text-xs focus:outline-primaryBtn "
               type="text"
-              placeholder="Governance name"
+              id="govName"
+              placeholder="enter governance name"
               onChange={(event) => {
                 setName(event.target.value.trim());
               }}
             />
           </div>
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="timeLockDelay"
+            >
+              Time lock delay
+            </label>
             <select
               onChange={(event) => {
                 setLockDelay(event.target.value);
               }}
+              id="timeLockDelay"
               className="form-select appearance-none  border border-solid border-gray-300 rounded-md transition  ease-in  w-full h-[40px] cursor-pointer py-2 px-3 text-gray-400 leading-tight text-xs focus:outline-primaryBtn focus:text-black  "
             >
-              <option value="">Time lock delay</option>
+              <option value="">enter time lock delay</option>
 
               <option value="2">2 days</option>
               <option value="3">3 days</option>
@@ -150,53 +163,67 @@ function ContractForm() {
             </select>
           </div>
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="votingDelay"
+            >
+              Voting delay
+            </label>
             <select
               onChange={(event) => {
                 setVoteDelay(event.target.value);
               }}
+              id="votingDelay"
               className="form-select appearance-none  border border-solid border-gray-300 rounded-md transition  ease-in  w-full h-[40px] cursor-pointer py-2 px-3 text-gray-400 leading-tight text-xs focus:outline-primaryBtn focus:text-black  "
             >
-              <option value="">Voting delay</option>
-              <option value="1">1 day</option>
-              <option value="2">2 days</option>
-              <option value="3">3 days</option>
-              <option value="4">4 days</option>
-              <option value="5">5 days</option>
-              <option value="6">6 days</option>
-              <option value="7">7 days</option>
-              <option value="8">8 days</option>
-              <option value="9">9 days</option>
-              <option value="10">10 days</option>
-              <option value="11">11 days</option>
-              <option value="12">12 days</option>
-              <option value="13">13 days</option>
-              <option value="14">14 days</option>
-              <option value="15">15 days</option>
-              <option value="16">16 days</option>
-              <option value="17">17 days</option>
-              <option value="18">18 days</option>
-              <option value="19">19 days</option>
-              <option value="20">20 days</option>
-              <option value="21">21 days</option>
-              <option value="22">22 days</option>
-              <option value="23">23 days</option>
-              <option value="24">24 days</option>
-              <option value="25">25 days</option>
-              <option value="26">26 days</option>
-              <option value="27">27 days</option>
-              <option value="28">28 days</option>
-              <option value="29">29 days</option>
-              <option value="30">30 days</option>
+              <option value="">enter voting delay</option>
+              <option value="1">1 second</option>
+              <option value="2">2 seconds</option>
+              <option value="3">3 seconds</option>
+              <option value="4">4 seconds</option>
+              <option value="5">5 seconds</option>
+              <option value="6">6 seconds</option>
+              <option value="7">7 seconds</option>
+              <option value="8">8 seconds</option>
+              <option value="9">9 seconds</option>
+              <option value="10">10 seconds</option>
+              <option value="11">11 seconds</option>
+              <option value="12">12 seconds</option>
+              <option value="13">13 seconds</option>
+              <option value="14">14 seconds</option>
+              <option value="15">15 seconds</option>
+              <option value="16">16 seconds</option>
+              <option value="17">17 seconds</option>
+              <option value="18">18 seconds</option>
+              <option value="19">19 seconds</option>
+              <option value="20">20 seconds</option>
+              <option value="21">21 seconds</option>
+              <option value="22">22 seconds</option>
+              <option value="23">23 seconds</option>
+              <option value="24">24 seconds</option>
+              <option value="25">25 seconds</option>
+              <option value="26">26 seconds</option>
+              <option value="27">27 seconds</option>
+              <option value="28">28 seconds</option>
+              <option value="29">29 seconds</option>
+              <option value="30">30 seconds</option>
             </select>
           </div>
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="votingPeriod"
+            >
+              Voting period
+            </label>
             <select
               onChange={(event) => {
                 setVotePeriod(event.target.value);
               }}
+              id="votingPeriod"
               className="form-select focus:text-black  appearance-none  border border-solid border-gray-300 rounded-md transition  ease-in  w-full h-[40px] cursor-pointer py-2 px-3 text-gray-400 leading-tight text-xs focus:outline-primaryBtn  "
             >
-              <option value="">Voting period</option>
+              <option value="">enter voting period</option>
               <option value="1">1 day</option>
               <option value="2">2 days</option>
               <option value="3">3 days</option>
@@ -230,13 +257,20 @@ function ContractForm() {
             </select>
           </div>
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="proposalThreshold"
+            >
+              Proposal threshold
+            </label>
             <select
               onChange={(event) => {
                 setProposalThreshold(event.target.value);
               }}
+              id="proposalThreshold"
               className="form-select appearance-none  focus:text-black border border-solid border-gray-300 rounded-md transition  ease-in  w-full h-[40px] cursor-pointer py-2 px-3 text-gray-400 leading-tight text-xs focus:outline-primaryBtn  "
             >
-              <option value="">Proposal threshold</option>
+              <option value="">enter proposal threshold</option>
               <option value="1">1</option>
               <option value="10">10</option>
               <option value="50">50</option>
@@ -246,13 +280,20 @@ function ContractForm() {
             </select>
           </div>
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="votingThreshold"
+            >
+              Voting threshold
+            </label>
             <select
               onChange={(event) => {
                 setVoteThreshold(event.target.value);
               }}
+              id="votingThreshold"
               className="form-select focus:text-black  appearance-none  border border-solid border-gray-300 rounded-md transition  ease-in  w-full h-[40px] cursor-pointer py-2 px-3 text-gray-400 leading-tight text-xs focus:outline-primaryBtn  "
             >
-              <option value="">Voting threshold</option>
+              <option value="">enter voting threshold</option>
               <option value="1">1</option>
               <option value="10">10</option>
               <option value="50">50</option>
@@ -262,13 +303,20 @@ function ContractForm() {
             </select>
           </div>
           <div className="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
+              htmlFor="transactionValue"
+            >
+              Transaction value
+            </label>
             <select
               onChange={(event) => {
                 setTransactionValue(event.target.value);
               }}
+              id="transactionValue"
               className="form-select appearance-none focus:text-black  border border-solid border-gray-300 rounded-md transition  ease-in  w-full h-[40px] cursor-pointer py-2 px-3 text-gray-400 leading-tight text-xs focus:outline-primaryBtn  "
             >
-              <option value="">Transaction value</option>
+              <option value="">enter transaction value</option>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="10">10</option>
