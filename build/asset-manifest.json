@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.931ebaca.chunk.css",
-    "main.js": "/static/js/main.b1ed78cd.chunk.js",
-    "main.js.map": "/static/js/main.b1ed78cd.chunk.js.map",
+    "main.css": "/static/css/main.87f01315.chunk.css",
+    "main.js": "/static/js/main.4ea0b094.chunk.js",
+    "main.js.map": "/static/js/main.4ea0b094.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ce029564.js",
     "runtime-main.js.map": "/static/js/runtime-main.ce029564.js.map",
     "static/js/2.db865e62.chunk.js": "/static/js/2.db865e62.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.9585f0aa.chunk.js": "/static/js/3.9585f0aa.chunk.js",
     "static/js/3.9585f0aa.chunk.js.map": "/static/js/3.9585f0aa.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.931ebaca.chunk.css.map": "/static/css/main.931ebaca.chunk.css.map",
+    "static/css/main.87f01315.chunk.css.map": "/static/css/main.87f01315.chunk.css.map",
     "static/js/2.db865e62.chunk.js.LICENSE.txt": "/static/js/2.db865e62.chunk.js.LICENSE.txt",
     "static/media/Coin98.1e4e4073.png": "/static/media/Coin98.1e4e4073.png",
     "static/media/MathWallet.c8223809.svg": "/static/media/MathWallet.c8223809.svg",
@@ -29,7 +29,7 @@
   "entrypoints": [
     "static/js/runtime-main.ce029564.js",
     "static/js/2.db865e62.chunk.js",
-    "static/css/main.931ebaca.chunk.css",
-    "static/js/main.b1ed78cd.chunk.js"
+    "static/css/main.87f01315.chunk.css",
+    "static/js/main.4ea0b094.chunk.js"
   ]
 }
