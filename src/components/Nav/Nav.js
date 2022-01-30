@@ -32,7 +32,7 @@ function Nav(props) {
             src={logo}
           />
           <span className="font-headFont font-bold leading-loose pt-3">
-            Fresh Coast Blockchain
+               DAO Architect
           </span>
         </Link>
         <div className="hidden lg:flex w-[55%]   justify-center space-x-8 font-headFont font-medium leading-loose  pt-2">
