@@ -66,7 +66,7 @@ function SecondFrame() {
           </p>*/}
         </div>
         <div
-          className="h-[337px] bg-no-repeat border-2 bg-right-bottom  relative"
+          className="h-[337px] bg-no-repeat  border-2 bg-right-bottom  relative"
           style={{ backgroundImage: `url(${creatorImage})` }}
         >
           <span
