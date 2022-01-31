@@ -713,6 +713,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 337px;
 }
 
+.h-\[400px\]{
+  height: 400px;
+}
+
+.h-\[475px\]{
+  height: 475px;
+}
+
+.h-\[405px\]{
+  height: 405px;
+}
+
 .max-h-\[304px\]{
   max-height: 304px;
 }
@@ -1742,6 +1754,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-size: 1.5rem;
     line-height: 2rem;
   }
+
+  .sm\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
 }
 
 @media (min-width: 768px){
@@ -1832,6 +1849,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:text-6xl{
     font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .lg\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .lg\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .lg\:text-5xl{
+    font-size: 3rem;
     line-height: 1;
   }
 }

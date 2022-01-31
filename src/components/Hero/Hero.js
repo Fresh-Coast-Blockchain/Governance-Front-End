@@ -13,9 +13,9 @@ function Hero() {
   return (
     <div>
       <div className="grid grid-cols-4 pt-14 pb-10 h-auto px-5 md:px-16  bg-bgBlue ">
-        <div className=" col-span-4 sm:col-span-2 xl:col-span-3">
+        <div className=" col-span-4 sm:col-span-2 ">
           <div className="flex flex-col justify-center h-full ">
-            <h2 className=" font-bold text-center sm:text-left  text-3xl sm:text-4xl lg:text-6xl pb-4 xl:leading-normal">
+            <h2 className=" font-bold text-center sm:text-left  text-3xl sm:text-5xl lg:text-6xl pb-4 xl:leading-normal">
               Access to Unlimited Governance Proposals
             </h2>
             <p className=" text-xl text-justify  sm:text-left sm:text-2xl font-normal">
@@ -36,7 +36,7 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className=" hidden sm:block sm:col-span-2 xl:col-span-1">
+        <div className=" hidden sm:block sm:col-span-2 ">
           <img
             className=" h-full w-full"
             src={homepageHero}

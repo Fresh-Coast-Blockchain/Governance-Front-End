@@ -16,7 +16,7 @@ function ResultHero() {
             </p>
           </div>
         </div>
-        <div className="hidden sm:block sm:col-span-2 xl:col-span-2 h-[275px] ">
+        <div className="hidden sm:block sm:col-span-2 xl:col-span-2 h-[405px] ">
           <img
             src={result}
             alt="coin holder"
