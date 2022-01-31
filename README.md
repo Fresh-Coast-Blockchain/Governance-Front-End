@@ -1,6 +1,7 @@
 # Governance-Front-End
 
-Note: In order to use the application on the Fuji TestNet you will need test FRESH tokens. Email brad.anderson@freshcoastblockchain.com for free FRESH tokens in order to use this application.
+Note: In order to use the application on the Fuji TestNet you will need test FRESH tokens. Email brad.anderson@freshcoastblockchain.com for free FRESH tokens in order to use this application.  In order to use the tokens in MetaMask, import them using the address: 0x364ba491b1201a9c0bd326144cd6472e5ff299f1, it will automatically populate the symbol (FRESH)  and the decimals (18).
+
 
 This is the frontend of an app that enables users to create gorvernance contracts on the go with few button clicks.
 
