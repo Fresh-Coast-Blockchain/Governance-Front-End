@@ -10,15 +10,15 @@ function SecondFrame() {
       <div className="h-auto px-5 md:px-16 py-6 md:py-16">
         <div>
           <h3 className=" font-bold text-2xl mt-2 leading-normal text-center">
-            <ExternalLink href="http://freshcoastblockchain.com">
-              <span>Freshcoastblockchain.com</span>
-            </ExternalLink>
+            {/* <ExternalLink href="http://freshcoastblockchain.com">*/}
+            <span>DAO Architect</span>
+            {/*</ExternalLink></div></div>*/}
           </h3>
 
           <p className="mt-6 font-normal text-xl text-justify sm:text-center ">
-            Fresh coast blockchain is disrupting blockchain governance. We
-            provide real-time creation of audited, certified, tested, and
-            upgradable governance contracts.
+            DAO Architect is disrupting blockchain governance. We provide
+            real-time creation of audited, certified, tested, and upgradable
+            governance contracts.
           </p>
         </div>
       </div>
