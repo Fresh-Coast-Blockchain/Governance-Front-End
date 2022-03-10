@@ -10,51 +10,21 @@ function SecondFrame() {
       <div className="h-auto px-5 md:px-16 py-6 md:py-16">
         <div>
           <h3 className=" font-bold text-2xl mt-2 leading-normal text-center">
-            <ExternalLink href="http://freshcoastblockchain.com">
-              <span>DAO Architect</span>
-            </ExternalLink>
+
+            {/* <ExternalLink href="http://freshcoastblockchain.com">*/}
+            <span>DAO Architect</span>
+            {/*</ExternalLink></div></div>*/}
           </h3>
 
-          <p className="mt-6 font-normal text-xl text-justify sm:text-center mb-6">
-            DAO Architect is disrupting on and off blockchain governance. We
-            provide real-time creation of audited, certified, tested, and
-            upgradable governance contracts. 
+          <p className="mt-6 font-normal text-xl text-justify sm:text-center ">
+            DAO Architect is disrupting blockchain governance. We provide
+            real-time creation of audited, certified, tested, and upgradable
+            governance contracts.
           </p>
         </div>
-        <div className="grid grid-cols-2 justify-center gap-6 ">
-          <div className="h-auto min-h-[300px] pb-4 col-span-2 mb-4  sm:col-span-1 bg-bgBlue pt-6">
-            <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
-              Hackathon
-            </h4>
-            <ul className="text-center font-normal  px-6 pl-8 text-lg list-disc">
-              <li>Real-time Building</li>
 
-              <li>Voting</li>
-              <li>Manual Contract Adjustments</li>
-
-              <li>FRESH Token for voting</li>
-            </ul>
-          </div>
-          <div className="h-auto min-h-[300px] pb-4 col-span-2 mb-4 sm:col-span-1 bg-bgBlue pt-6">
-            <h4 className="text-center text-2xl font-bold leading-normal mb-6 ">
-              Production
-            </h4>
-            <ul className="text-center font-normal  px-6 pl-8 text-lg list-disc">
-              <li>Real-time Building</li>
-              <li>Upgradable</li>
-              <li>Voting</li>
-              <li>Manual Contract Adjustments</li>
-              <li>Automated Contract Adjustments</li>
-              <li>FRESH Token for voting</li>
-              <li>BYOT</li>
-              <li>Stacking/Rewards</li>
-              <li>Restricted Voting</li>
-              <li>Quadratic Voting</li>
-            </ul>
-          </div>
-        </div>
       </div>
-      <div className="h-auto bg-bgGray grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5 md:px-16 py-6 md:py-16">
+      <div className="h-auto bg-bgGray grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5 md:px-16 py-6 ">
         <div>
           <h3 className=" font-bold text-center md:text-left text-3xl mt-20 mb-6">
             Create a contract, make a proposal or vote

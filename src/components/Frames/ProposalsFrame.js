@@ -15,6 +15,8 @@ function ProposalsFrame(props) {
   const [loading, setLoading] = useState(true);
   const [proposalList, setProposals] = useState([]);
   const [AuthState, currentAccount] = useAuth();
+  //get update contexts
+  const [connectWallet, disConnectWallet] = useAuthUpdate();
 
   //filter outcome
   const filterOutCome = (list) => {
@@ -121,6 +123,18 @@ function ProposalsFrame(props) {
     };
   };
 
+  function handleMoralisError(err) {
+    switch (err.code) {
+      case Moralis.Error.INVALID_SESSION_TOKEN:
+        disConnectWallet();
+        // If web browser, render a log in screen
+        // If Express.js, redirect the user to the log in route
+        break;
+
+      // Other Moralis API errors that you want to explicitly handle
+    }
+  }
+
   const getGovernorProposals = async () => {
     let address = props.contracts[0].get("govAddress");
     setName(props.contracts[0].get("govName"));
@@ -128,39 +142,52 @@ function ProposalsFrame(props) {
     const Proposals = Moralis.Object.extend("Proposals");
     const query = new Moralis.Query(Proposals);
     query.equalTo("govAddress", address);
-    const results = await query.find();
 
-    if (results.length > 0) {
-      let description;
-      let mydata;
-      let hexId;
-      let _64BytesId;
-      let proposalId;
+    query.find().then(
+      async function (data) {
+        // do stuff
+        const results = data;
+        if (results.length > 0) {
+          let description;
+          let mydata;
+          let hexId;
+          let _64BytesId;
+          let proposalId;
 
-      let proposalData = [];
-      // Do something with the returned Moralis.Object values
-      for (let i = 0; i < results.length; i++) {
-        const object = results[i];
-        description = object.get("description");
-        mydata = object.get("proposalId");
-        //vet hex id
-        hexId = mydata.events["0"].raw.data.substring(2);
-        //get second 64byte
-        _64BytesId = hexId.match(/.{1,64}/g)[1];
-        //proposalId = _64BytesId.charAt(_64BytesId.length - 1);
-        //get proposal id by removing leading zeros
-        proposalId = _64BytesId.replace(/^0+/, "");
-        let detail = await getProposalData(proposalId, description, address);
-        //push to array
-        proposalData = [...proposalData, detail];
+          let proposalData = [];
+          // Do something with the returned Moralis.Object values
+          for (let i = 0; i < results.length; i++) {
+            const object = results[i];
+            description = object.get("description");
+            mydata = object.get("proposalId");
+            //vet hex id
+            hexId = mydata.events["0"].raw.data.substring(2);
+            //get second 64byte
+            _64BytesId = hexId.match(/.{1,64}/g)[1];
+            //proposalId = _64BytesId.charAt(_64BytesId.length - 1);
+            //get proposal id by removing leading zeros
+            proposalId = _64BytesId.replace(/^0+/, "");
+            let detail = await getProposalData(
+              proposalId,
+              description,
+              address
+            );
+            //push to array
+            proposalData = [...proposalData, detail];
+          }
+          //filter outcome
+          let outCome = filterOutCome(proposalData);
+          setProposals(outCome);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      },
+      function (err) {
+        console.log(err);
+        handleMoralisError(err);
       }
-      //filter outcome
-      let outCome = filterOutCome(proposalData);
-      setProposals(outCome);
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
+    );
   };
 
   useEffect(() => {
