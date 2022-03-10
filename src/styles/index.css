@@ -689,8 +689,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 0.75rem;
 }
 
-.h-\[275px\]{
-  height: 275px;
+.h-\[400px\]{
+  height: 400px;
+}
+
+.h-\[405px\]{
+  height: 405px;
 }
 
 .h-20{
@@ -713,18 +717,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 337px;
 }
 
-.h-\[400px\]{
-  height: 400px;
-}
-
-.h-\[475px\]{
-  height: 475px;
-}
-
-.h-\[405px\]{
-  height: 405px;
-}
-
 .max-h-\[304px\]{
   max-height: 304px;
 }
@@ -743,10 +735,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .min-h-\[200px\]{
   min-height: 200px;
-}
-
-.min-h-\[300px\]{
-  min-height: 300px;
 }
 
 .w-full{
@@ -915,10 +903,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
 }
 
-.list-disc{
-  list-style-type: disc;
-}
-
 .appearance-none{
   -webkit-appearance: none;
           appearance: none;
@@ -978,10 +962,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-2{
   gap: 0.5rem;
-}
-
-.gap-6{
-  gap: 1.5rem;
 }
 
 .space-x-1 > :not([hidden]) ~ :not([hidden]){
@@ -1745,19 +1725,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     line-height: 1.75rem;
   }
 
-  .sm\:text-4xl{
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
   .sm\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  .sm\:text-7xl{
-    font-size: 4.5rem;
-    line-height: 1;
   }
 }
 
@@ -1805,6 +1775,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-bottom: 4rem;
   }
 
+  .md\:py-8{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .md\:py-4{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .md\:text-left{
     text-align: left;
   }
@@ -1847,23 +1827,13 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .lg\:text-6xl{
-    font-size: 3.75rem;
-    line-height: 1;
-  }
-
-  .lg\:text-8xl{
-    font-size: 6rem;
-    line-height: 1;
-  }
-
   .lg\:text-7xl{
     font-size: 4.5rem;
     line-height: 1;
   }
 
-  .lg\:text-5xl{
-    font-size: 3rem;
+  .lg\:text-6xl{
+    font-size: 3.75rem;
     line-height: 1;
   }
 }
@@ -1871,14 +1841,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 @media (min-width: 1280px){
   .xl\:col-span-2{
     grid-column: span 2 / span 2;
-  }
-
-  .xl\:col-span-3{
-    grid-column: span 3 / span 3;
-  }
-
-  .xl\:col-span-1{
-    grid-column: span 1 / span 1;
   }
 
   .xl\:grid-cols-4{

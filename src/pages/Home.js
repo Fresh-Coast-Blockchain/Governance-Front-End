@@ -13,7 +13,7 @@ function Results() {
         <Header bg={"bg-bgBlue"} />
         <Hero />
         <SecondFrame />
-        <HomeBase />
+
         <MyLoader />
       </AuthProvider>
     </div>
