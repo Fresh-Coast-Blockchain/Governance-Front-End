@@ -32,6 +32,7 @@ function Nav(props) {
             src={logo}
           />
           <span className="font-headFont font-bold leading-loose pt-3">
+
             DAO Architect
           </span>
         </Link>

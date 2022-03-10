@@ -10,6 +10,7 @@ function SecondFrame() {
       <div className="h-auto px-5 md:px-16 py-6 md:py-16">
         <div>
           <h3 className=" font-bold text-2xl mt-2 leading-normal text-center">
+
             {/* <ExternalLink href="http://freshcoastblockchain.com">*/}
             <span>DAO Architect</span>
             {/*</ExternalLink></div></div>*/}
@@ -21,6 +22,7 @@ function SecondFrame() {
             governance contracts.
           </p>
         </div>
+
       </div>
       <div className="h-auto bg-bgGray grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5 md:px-16 py-6 ">
         <div>

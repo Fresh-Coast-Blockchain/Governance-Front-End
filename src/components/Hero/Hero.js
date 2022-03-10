@@ -19,7 +19,7 @@ function Hero() {
               Access to Unlimited Governance Proposals
             </h2>
             <p className=" text-xl text-justify  sm:text-left sm:text-2xl font-normal">
-              Make your voice heard. View and vote on governance proposals.
+              Create, view and vote on governance proposals.
             </p>
 
             <div className=" flex justify-center sm:justify-start">
