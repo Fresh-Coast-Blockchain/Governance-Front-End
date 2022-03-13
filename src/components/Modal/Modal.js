@@ -70,7 +70,7 @@ function Modal(props) {
     let netId = await web3.eth.net.getId();
     if (netId === 43113) {
       let options = {
-        contractAddress: "0x8728f06Cabc2850B2Faa6Ab6F007129cc3547c95",
+        contractAddress: "0x0B2C03318Fb57C84082744E383CDbB3Cc11919B2",
         functionName: "createGovernor",
         abi: [
           {

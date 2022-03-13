@@ -4,7 +4,7 @@ import { useAuthUpdate, useAuth, useLoader } from "../contexts/AuthProvider";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function Progress({ status, data, voteCount, totalVotes }) {
+function Progress({ status, data, voteCount, totalVotes, contractAddress }) {
   //get auth context
   const [AuthState, currentAccount] = useAuth();
   const [loaderState, setLoader] = useLoader();
@@ -31,7 +31,7 @@ function Progress({ status, data, voteCount, totalVotes }) {
       if (results.length == 0) {
         //prepare for delegation
         let options = {
-          contractAddress: "0x364ba491b1201a9c0bd326144cd6472e5ff299f1",
+          contractAddress: "0x312875a9a18ECf5CF491f5744900542d2B7Ff354",
           functionName: "delegate",
           abi: [
             {
@@ -104,7 +104,11 @@ function Progress({ status, data, voteCount, totalVotes }) {
     votes.set("proposalId", Number(data.proposalId_));
     votes.set("vote", choice);
     votes.set("voter", user);
-    votes.set("govAddress", address);
+    if (address) {
+      votes.set("govAddress", address);
+    } else {
+      votes.set("govAddress", contractAddress);
+    }
 
     votes.save().then(
       (votes) => {
@@ -120,8 +124,14 @@ function Progress({ status, data, voteCount, totalVotes }) {
     );
   };
   async function castVote(choice) {
+    let voteAddress;
+    if (address) {
+      voteAddress = address;
+    } else {
+      voteAddress = contractAddress;
+    }
     let options = {
-      contractAddress: address,
+      contractAddress: voteAddress,
       functionName: "castVote",
       abi: [
         {

@@ -8,17 +8,32 @@ function ProposalModal(props) {
   const [AuthState, currentAccount] = useAuth();
   const [loading, setLoading] = useState(false);
   const [caution, setCaution] = useState(false);
+  const [inputState, setInputState] = useState(false);
 
   const [account, setAccount] = useState("");
   const [user, setUser] = useState("");
   const [proposal, setProposal] = useState("");
+  const [title, setTitle] = useState("");
   const [proposalCreated, setProposalCreated] = useState(false);
   const [form, setForm] = useState(true);
   const { isAuthenticated, Moralis, isInitialized } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 
   const handleProposalIns = (event) => {
-    setProposal(event.target.value);
+    setProposal(event.target.value.trim());
+    if (proposal.length > 1 && title.length > 1) {
+      setInputState(true);
+    } else {
+      setInputState(false);
+    }
+  };
+  const handleTitle = (event) => {
+    setTitle(event.target.value.trim());
+    if (proposal.length > 1 && title.length > 1) {
+      setInputState(true);
+    } else {
+      setInputState(false);
+    }
   };
 
   async function delegate() {
@@ -35,7 +50,7 @@ function ProposalModal(props) {
       if (results.length == 0) {
         //prepare delegation
         let options = {
-          contractAddress: "0x364ba491b1201a9c0bd326144cd6472e5ff299f1",
+          contractAddress: "0x312875a9a18ECf5CF491f5744900542d2B7Ff354",
           functionName: "delegate",
           abi: [
             {
@@ -132,6 +147,11 @@ function ProposalModal(props) {
             },
             {
               internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              internalType: "string",
               name: "description",
               type: "string",
             },
@@ -154,6 +174,7 @@ function ProposalModal(props) {
         signatures: [],
         calldatas: [],
         description: proposal,
+        title: title,
       },
       //msgValue: Moralis.Units.ETH(0.1),
     };
@@ -168,6 +189,7 @@ function ProposalModal(props) {
 
         proposals.set("proposalId", id);
         proposals.set("description", proposal);
+        proposals.set("title", title);
         proposals.set("proposer", user);
         proposals.set("govAddress", props.address);
 
@@ -225,7 +247,9 @@ function ProposalModal(props) {
             {caution && (
               <div>
                 <p>
-                  <strong>NOTE:</strong> Once created this proposal cannot be modified.             </p>
+                  <strong>NOTE:</strong> Once created this proposal cannot be
+                  modified.{" "}
+                </p>
                 <div className="flex justify-center space-x-3">
                   <span
                     className="pt-2  text-xs text-primaryBtn cursor-pointer hover:underline"
@@ -282,15 +306,30 @@ function ProposalModal(props) {
             )}
             {form && (
               <div>
-                <div className="m-auto h-[200px] w-full  text-white  ">
+                <div className="m-auto h-[250px] w-full  text-white  ">
+                  <label htmlFor="title" className="text-black text-sm">
+                    Title:
+                  </label>
+                  <input
+                    type="text"
+                    value={title}
+                    onChange={handleTitle}
+                    id="title"
+                    placeholder="enter title for your proposal"
+                    className="w-full h-[50px] text-black p-2 rounded-md outline-0 text-xs bg-gray-100 mb-2"
+                  />
+                  <label htmlFor="description" className="text-black text-sm">
+                    Description:
+                  </label>
                   <textarea
                     onChange={handleProposalIns}
                     value={proposal}
-                    className="w-full h-full bg-gray-100 text-black p-2 outline-0 text-xs"
+                    id="description"
+                    className="w-full h-[150px]  rounded-md bg-gray-100 text-black p-2 outline-0 text-xs"
                   ></textarea>
                 </div>
 
-                <div className="flex justify-center space-x-2  ">
+                <div className="flex justify-center space-x-2 mt-2  ">
                   <span
                     className="py-2 px-2 mt-2   text-xs text-primaryBtn bg-bgGray rounded-md cursor-pointer hover:underline "
                     onClick={() => {
@@ -301,19 +340,26 @@ function ProposalModal(props) {
                   >
                     Cancel
                   </span>
-                  <span
-                    className="py-2 px-2 mt-2   text-xs bg-primaryBtn text-white rounded-md cursor-pointer "
-                    onClick={() => {
-                      if (!proposal) {
-                        props.hide(false);
-                      } else {
-                        setCaution(true);
-                        setForm(false);
-                      }
-                    }}
-                  >
-                    Propose
-                  </span>
+                  {inputState && (
+                    <button
+                      className="py-2 px-2 mt-2   text-xs bg-primaryBtn text-white rounded-md cursor-pointer "
+                      onClick={() => {
+                        if (!proposal) {
+                          props.hide(false);
+                        } else {
+                          setCaution(true);
+                          setForm(false);
+                        }
+                      }}
+                    >
+                      Propose
+                    </button>
+                  )}
+                  {!inputState && (
+                    <button className="py-2 px-2 mt-2   text-xs bg-gray-400 text-white rounded-md cursor-pointer ">
+                      Propose
+                    </button>
+                  )}
                 </div>
               </div>
             )}

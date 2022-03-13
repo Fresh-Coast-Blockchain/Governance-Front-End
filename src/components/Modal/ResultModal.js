@@ -96,7 +96,7 @@ function ResultModal(props) {
                             />
                           </div>
                           <h3 className="font-medium text-black text-sm pt-1 pl-2 ">
-                            {props.name}
+                            {props.title}
                           </h3>
                         </div>
                         <div className="bg-bgBlue font-normal w-[100px] flex items-center justify-center text-center text-xs text-primaryBtn  sm:ml-2   rounded-full ">
@@ -122,7 +122,7 @@ function ResultModal(props) {
                           <div className="w-full h-2 bg-gray-300 rounded-full relative mt-2 ">
                             <div
                               className="rounded-l h-full bg-yesPoint inline-block absolute top-0 left-0"
-                              style={{ width: "70%" }}
+                              style={{ width: `${props.yesPercent}%` }}
                             ></div>
                           </div>
                         </div>
@@ -137,7 +137,7 @@ function ResultModal(props) {
                           <div className="w-full h-2 bg-gray-300 rounded-full relative mt-2 ">
                             <div
                               className="rounded-l h-full bg-noPoint inline-block absolute top-0 left-0"
-                              style={{ width: "30%" }}
+                              style={{ width: `${props.noPercent}%` }}
                             ></div>
                           </div>
                         </div>
