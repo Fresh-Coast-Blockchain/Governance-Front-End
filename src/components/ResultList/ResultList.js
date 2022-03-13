@@ -39,7 +39,7 @@ function ResultList() {
   };
 
   //get proposal data from chain
-  const getProposalData = async (id, description, address) => {
+  const getProposalData = async (id, description, address, title) => {
     const ABI = [
       {
         inputs: [
@@ -55,6 +55,11 @@ function ResultList() {
             internalType: "uint256",
             name: "proposalId_",
             type: "uint256",
+          },
+          {
+            internalType: "string",
+            name: "proposalTitle_",
+            type: "string",
           },
           {
             internalType: "address",
@@ -125,6 +130,7 @@ function ResultList() {
       data: proposal,
       description: description,
       address: address,
+      title: title,
     };
   };
 
@@ -147,6 +153,7 @@ function ResultList() {
         let hexId;
         let _64BytesId;
         let proposalId;
+        let title;
 
         let proposalData = [];
 
@@ -154,6 +161,7 @@ function ResultList() {
         for (let i = 0; i < results.length; i++) {
           const object = results[i];
           description = object.get("description");
+          title = object.get("title");
           mydata = object.get("proposalId");
           //get hex of id
           hexId = mydata.events["0"].raw.data.substring(2);
@@ -167,7 +175,8 @@ function ResultList() {
           let detail = await getProposalData(
             proposalId,
             description,
-            results[i].get("govAddress")
+            results[i].get("govAddress"),
+            title
           );
           //push proposal into list
           proposalData = [...proposalData, detail];
@@ -234,6 +243,7 @@ function ResultList() {
                     key={index}
                     data={proposal.data}
                     description={proposal.description}
+                    title={proposal.title}
                     address={proposal.address}
                   ></ResultsCard>
                 );

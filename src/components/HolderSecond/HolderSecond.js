@@ -29,6 +29,7 @@ function HolderSecond() {
   const filterOutCome = (list) => {
     let result = [];
     list.forEach((item) => {
+      console.log(item.data.state_);
       if (filter == "all") {
         result = [...result, item];
       } else if (filter == "pending" && item.data.state_ == 0) {
@@ -43,7 +44,7 @@ function HolderSecond() {
   };
 
   //get proposal data based on id
-  const getProposalData = async (id, description) => {
+  const getProposalData = async (id, description, title) => {
     const ABI = [
       {
         inputs: [
@@ -59,6 +60,11 @@ function HolderSecond() {
             internalType: "uint256",
             name: "proposalId_",
             type: "uint256",
+          },
+          {
+            internalType: "string",
+            name: "proposalTitle_",
+            type: "string",
           },
           {
             internalType: "address",
@@ -127,6 +133,7 @@ function HolderSecond() {
     return {
       data: proposal,
       description: description,
+      title: title,
     };
   };
 
@@ -148,6 +155,7 @@ function HolderSecond() {
         let hexId;
         let _64BytesId;
         let proposalId;
+        let title;
 
         let proposalData = [];
 
@@ -155,6 +163,7 @@ function HolderSecond() {
         for (let i = 0; i < results.length; i++) {
           const object = results[i];
           description = object.get("description");
+          title = object.get("title");
           mydata = object.get("proposalId");
           //get id hex
           hexId = mydata.events["0"].raw.data.substring(2);
@@ -163,7 +172,8 @@ function HolderSecond() {
           //proposalId = _64BytesId.charAt(_64BytesId.length - 1);
           //get id leaving leading zeros
           proposalId = _64BytesId.replace(/^0+/, "");
-          let detail = await getProposalData(proposalId, description);
+          let detail = await getProposalData(proposalId, description, title);
+          console.log(detail);
           //store proposal in array
           proposalData = [...proposalData, detail];
         }

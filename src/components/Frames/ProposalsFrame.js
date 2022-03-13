@@ -36,7 +36,7 @@ function ProposalsFrame(props) {
   };
 
   //get proposal data
-  const getProposalData = async (id, description, address) => {
+  const getProposalData = async (id, description, address, title) => {
     const ABI = [
       {
         inputs: [
@@ -52,6 +52,11 @@ function ProposalsFrame(props) {
             internalType: "uint256",
             name: "proposalId_",
             type: "uint256",
+          },
+          {
+            internalType: "string",
+            name: "proposalTitle_",
+            type: "string",
           },
           {
             internalType: "address",
@@ -120,6 +125,7 @@ function ProposalsFrame(props) {
     return {
       data: proposal,
       description: description,
+      title: title,
     };
   };
 
@@ -153,12 +159,14 @@ function ProposalsFrame(props) {
           let hexId;
           let _64BytesId;
           let proposalId;
+          let title;
 
           let proposalData = [];
           // Do something with the returned Moralis.Object values
           for (let i = 0; i < results.length; i++) {
             const object = results[i];
             description = object.get("description");
+            title = object.get("title");
             mydata = object.get("proposalId");
             //vet hex id
             hexId = mydata.events["0"].raw.data.substring(2);
@@ -170,7 +178,8 @@ function ProposalsFrame(props) {
             let detail = await getProposalData(
               proposalId,
               description,
-              address
+              address,
+              title
             );
             //push to array
             proposalData = [...proposalData, detail];

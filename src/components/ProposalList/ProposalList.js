@@ -44,6 +44,7 @@ function ProposalList(props) {
               status={Number(proposal.data.state_)}
               data={proposal.data}
               description={proposal.description}
+              title={proposal.title}
               name={props.govName}
               address={props.address ? props.address : address}
             ></CoinCard>

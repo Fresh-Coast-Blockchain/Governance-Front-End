@@ -95,7 +95,9 @@ function CoinCard(props) {
                     src={!image ? img : `https://ipfs.infura.io/ipfs/${image}`}
                   />
                 </div>
-                <h3 className="font-medium text-sm pt-1 pl-2 ">{props.name}</h3>
+                <h3 className="font-medium text-sm pt-1 pl-2 ">
+                  {props.title}
+                </h3>
               </div>
               <VoteState status={props.status} />
             </div>
@@ -125,6 +127,7 @@ function CoinCard(props) {
             data={props.data}
             voteCount={votesNumber}
             totalVotes={totalVotes}
+            contractAddress={props.address ? props.address : ""}
           />
         </div>
       </div>

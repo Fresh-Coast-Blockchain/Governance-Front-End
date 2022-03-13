@@ -102,7 +102,9 @@ function ResultsCard(props) {
                     src={!image ? img : `https://ipfs.infura.io/ipfs/${image}`}
                   />
                 </div>
-                <h3 className="font-medium text-sm pt-1 pl-2 ">{name}</h3>
+                <h3 className="font-medium text-sm pt-1 pl-2 ">
+                  {props.title}
+                </h3>
               </div>
               <div className="bg-greenShade font-normal w-[100px] flex items-center justify-center text-center text-xs text-yesPoint  sm:ml-2   rounded-full ">
                 Finished
@@ -122,6 +124,7 @@ function ResultsCard(props) {
           hide={setModal}
           name={name}
           description={props.description}
+          title={props.title}
           img={!image ? img : `https://ipfs.infura.io/ipfs/${image}`}
           yes={forYes()}
           no={forNo()}
